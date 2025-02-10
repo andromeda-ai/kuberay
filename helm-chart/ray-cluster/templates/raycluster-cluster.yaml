@@ -38,6 +38,12 @@ spec:
     {{- end }}
     template:
       spec:
+        {{- if .Values.head.schedulerName }}
+        schedulerName: {{ .Values.head.schedulerName }}
+        {{- end }}
+        {{- if .Values.head.terminationGracePeriodSeconds }}
+        terminationGracePeriodSeconds: {{ .Values.head.terminationGracePeriodSeconds }}
+        {{- end }}
         {{- if .Values.head.dnsConfig }}
         dnsConfig: {{- toYaml .Values.head.dnsConfig | nindent 10 }}
         {{- end }}
@@ -141,6 +147,12 @@ spec:
     groupName: {{ $groupName }}
     template:
       spec:
+        {{- if $values.schedulerName }}
+        schedulerName: {{ $values.schedulerName }}
+        {{- end }}
+        {{- if $values.terminationGracePeriodSeconds }}
+        terminationGracePeriodSeconds: {{ $values.terminationGracePeriodSeconds }}
+        {{- end }}
         {{- if $values.dnsConfig }}
         dnsConfig: {{- toYaml $values.dnsConfig | nindent 10 }}
         {{- end }}
@@ -244,6 +256,12 @@ spec:
     groupName: {{ .Values.worker.groupName }}
     template:
       spec:
+        {{- if .Values.worker.schedulerName }}
+        schedulerName: {{ .Values.worker.schedulerName }}
+        {{- end }}
+        {{- if .Values.worker.terminationGracePeriodSeconds }}
+        terminationGracePeriodSeconds: {{ .Values.worker.terminationGracePeriodSeconds }}
+        {{- end }}
         {{- if .Values.worker.dnsConfig }}
         dnsConfig: {{- toYaml .Values.worker.dnsConfig | nindent 10 }}
         {{- end }}
